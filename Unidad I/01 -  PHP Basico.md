@@ -258,6 +258,168 @@ echo "<br>";
 ?>
 ```
 
-### For each
+### For each.
 
-### Tarea mostrar un array
+ Es un tipo especial de bucle que permite recorrer estructuras que contienen varios elementos.
+ 
+ ```php
+ $calificaciones = [100, 99, 89, 78, 67, 76];
+
+$arreglo = ["hola mundo", 24, true];
+
+  
+
+foreach ($calificaciones as $calificacion => $value) {
+
+print($calificacion);
+
+echo "<br>";
+
+}
+```
+
+### Funciones.
+Las funciones de PHP, son **acciones que se realizan de manera independiente** y deben realizar únicamente una sola tarea.
+
+```php
+<?php
+
+  
+
+function saludar ($nombre, $apellido) {
+
+return "Hola " . $nombre . " " . $apellido;
+
+}
+
+  
+
+print(saludar('Juan', 'De la cruz'))
+
+?>
+```
+
+### Clases. 
+
+ Actúa como una **plantilla** para definir las características y comportamientos de los métodos y objetos
+
+```php
+<?php
+
+  
+
+class Persona {
+
+public function __construct(public $nombre, public $apellido, public $edad) {
+
+}
+
+}
+
+  
+
+class Alumno {
+
+public $matricula;
+
+public $apellido;
+
+public $edad;
+
+public function __construct($matricula, $apellido, $edad) {
+
+$this -> matricula = $matricula;
+
+$this -> apellido = $apellido;
+
+$this -> edad = $edad;
+
+}
+
+  
+
+public function reprobar($materia) {
+
+return "Reprobaste: " . $materia;
+
+}
+
+  
+
+public function aprobar($materia, $calificacion) {
+
+return "Aprobaste: " . $materia . " con: " . $calificacion;
+
+}
+
+}
+
+$nombre = new Alumno (211190008, 'Juan', 26);
+
+  
+
+$juan = new Persona('Juan', 'De la cruz', 26);
+
+echo "<pre>";
+
+print_r($juan);
+
+print_r($nombre);
+
+print($nombre -> aprobar("POO", 70 ));
+
+echo "<br>";
+
+print($nombre -> reprobar("POO"));
+
+echo "</pre>";
+```
+
+### Encapsulación
+
+- **Protected**. Nos permite modificarlo dentro de la clase.
+- **Public**. Nos permite modificar donde sea.
+- **Private**. Solo permite modificarlo y acceder desde la propia clase.
+
+```php
+<?php
+
+  
+
+class Producto {
+
+public function __construct(protected $nombre = "oreo", protected $precio = 29, protected $caducidad = "10/11/2023") {}
+
+static public function obtenerProducto (){
+
+return "Accedimos al metodo statico";
+
+}
+
+}
+
+  
+
+echo "<pre>";
+
+$galletas = new Producto('Emperador', 30, "29/09/2023");
+
+echo "<br>";
+
+print_r($galletas -> obtenerProducto("Marias"));
+
+echo "<br>";
+
+print_r($galletas -> obtenerProducto("Emperador"));
+
+echo "<br>";
+
+print_r($galletas :: obtenerProducto());
+
+echo "<br>";
+
+echo "</pre>";
+
+?>
+```
+
